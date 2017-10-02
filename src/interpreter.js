@@ -1,10 +1,12 @@
 var Interpreter = function () {
+    let db=null;
 
-    this.parseDB = function (params, paramss, paramsss) {
+    this.parseDB = function (strDb) {
+        
 
     }
 
-    this.checkQuery = function (params) {
+    this.checkQuery = function (strQuery) {
         return true;
     }
 

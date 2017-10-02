@@ -13,7 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "mocha ./test/interpreterAcceptanceTests.js"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
