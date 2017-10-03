@@ -1,7 +1,7 @@
 var assert = require("chai").assert;
 var should = require('should');
 
-var Parser = require('../src/regexParser');
+var Parser = require('./regexParser');
 
 describe("parsing by using regex",function(){
     function csvParser(v){

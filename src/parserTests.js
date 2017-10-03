@@ -1,7 +1,7 @@
 var assert = require("chai").assert;
 var should = require('should');
 
-var Parser = require('../src/parser');
+var Parser = require('./parser');
 
 describe("parser functionality",function(){
     it("nothing is recognized",function(){

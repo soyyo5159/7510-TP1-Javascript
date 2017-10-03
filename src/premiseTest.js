@@ -1,7 +1,7 @@
 var assert = require("chai").assert;
 var should = require('should');
 
-var Premise = require('../src/premise');
+var Premise = require('./premise');
 
 describe("equality",function(){
     it("With many arguments",function(){
