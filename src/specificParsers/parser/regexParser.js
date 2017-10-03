@@ -9,7 +9,7 @@ RegexParser.prototype.recognizes=function(str){
 }
 
 RegexParser.prototype.separate=function(str){
-    return str.split(this.separationRegex);
+    return str.split(this.separationRegex).filter((x)=>x!=="");
 }
 
 module.exports=RegexParser;

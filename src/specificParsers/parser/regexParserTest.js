@@ -20,9 +20,7 @@ describe("parsing by using regex",function(){
     })
 
     it("something without commas isn't",function(){
-        console.log("EMPIEZA EL TEST")
         assert.equal((new csvParser(3)).parse("123"),"THE FUTURE");
-        console.log("TERMINA  EL TEST")
     })
 
 
