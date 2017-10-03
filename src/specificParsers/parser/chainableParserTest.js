@@ -13,8 +13,6 @@ describe("ChainableParser can be chained",function(){
     }
     ArrayParser.prototype.cantRecognize=()=>"NOPE";
 
-
-
     it("nextParser used",function(){
         assert.deepEqual((new ArrayParser()).parse("1,2,3.a,b,c"),[["1","2","3"],["a","b","c"]]);
     })

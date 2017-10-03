@@ -1,4 +1,4 @@
-const Parser = require("./parser.js")
+const Parser = require("./parser")
 function ChainableParser(){}
 ChainableParser.prototype=Object.create(Parser.prototype);
 ChainableParser.prototype.parseParts=function(str){

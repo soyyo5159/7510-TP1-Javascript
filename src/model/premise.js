@@ -1,17 +1,19 @@
 function Premise(name,values){
-    if(values instanceof Array){
-        this.name=name;
-        this.values=values;
-    }else{
-        this.name=name;
-        this.values=Array.prototype.slice.call(arguments,[1]);
+    this.name=name;
+    this.values=values || [];
+}
+
+Premise.build=function(args){
+    let arrArgs=Array.prototype.slice.apply(arguments);
+    if(arrArgs.length==1){
+        arrArgs=args;
     }
+    return new Premise(arrArgs[0],arrArgs.slice(1));
 }
 
 Premise.prototype.verifies=function(question,answerer){
     return this.equals(question);
 }
-
 
 Premise.prototype.equals=function(question){
     return question.name===this.name 
