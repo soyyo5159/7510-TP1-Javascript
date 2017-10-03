@@ -28,9 +28,7 @@ describe("parser functionality",function(){
         ArrayParser.prototype.cantRecognize=function(){return this.badValue};
         ArrayParser.prototype.separate=(arr)=>arr;
         ArrayParser.prototype.build=(v)=>v;
-        ArrayParser.prototype.next={
-            parse:(x)=>(new String(x)).valueOf()
-        };
+        ArrayParser.prototype.parseParts=(x)=>(new String(x)).valueOf();
 
         it("negate things that aren't arrays",function(){
             assert.equal((new ArrayParser(7)).parse({asd:89}),7);

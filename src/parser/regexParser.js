@@ -1,8 +1,8 @@
-const Parser = require("./parser");
+const ChainableParser = require("./chainableParser");
 
 function RegexParser(){}
 
-RegexParser.prototype=Object.create(Parser.prototype);
+RegexParser.prototype=Object.create(ChainableParser.prototype);
 
 RegexParser.prototype.recognizes=function(str){
     return this.recognitionRegex.test(str);

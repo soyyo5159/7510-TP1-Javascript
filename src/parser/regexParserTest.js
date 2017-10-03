@@ -10,18 +10,19 @@ describe("parsing by using regex",function(){
     csvParser.prototype=Object.create(Parser.prototype);
     csvParser.prototype.recognitionRegex=/,/;
     csvParser.prototype.separationRegex=/,/;
-    csvParser.prototype.next={
-        parse:(x)=>x
-    }
+    csvParser.prototype.parseParts=(x)=>x
     csvParser.prototype.build=(x)=>x;
-    csvParser.prototype.cantRecognize=function(){return this.badValue};
+    csvParser.prototype.cantRecognize=()=>"THE FUTURE"
+    
 
     it("something with commas is separated",function(){
         assert.sameOrderedMembers((new csvParser(3)).parse("1,2,3"),["1","2","3"]);
     })
 
     it("something without commas isn't",function(){
-        assert.equal((new csvParser(3)).parse("123"),3);
+        console.log("EMPIEZA EL TEST")
+        assert.equal((new csvParser(3)).parse("123"),"THE FUTURE");
+        console.log("TERMINA  EL TEST")
     })
 
 
