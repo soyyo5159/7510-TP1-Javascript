@@ -13,7 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "mocha"
+    "test": "mocha $(find -name *Test.js ) $(find -name *Tests.js )"
   },
   "repository": {
     "type": "git",
