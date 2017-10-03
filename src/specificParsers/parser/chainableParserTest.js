@@ -11,12 +11,15 @@ describe("ChainableParser can be chained",function(){
     ArrayParser.prototype.nextParser={
         parse:(str)=>str.split(",")
     }
+    ArrayParser.prototype.cantRecognize=()=>"NOPE";
 
-    it("generalParser used",function(){
+
+
+    it("nextParser used",function(){
         assert.deepEqual((new ArrayParser()).parse("1,2,3.a,b,c"),[["1","2","3"],["a","b","c"]]);
     })
-    it("nextParser used",function(){
-        assert.sameOrderedMembers((new ArrayParser()).parse("1,2,3"),["1","2","3"]);
+    it("can't parse",function(){
+        assert.deepEqual((new ArrayParser()).parse("1,2,3"),"NOPE");
     })
 
 
