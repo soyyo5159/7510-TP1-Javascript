@@ -10,3 +10,5 @@ Answerer.prototype.ask=function(satisfiable){
 Answerer.prototype.askQuestion=function(question){
     return this.satisfies((myVerificator)=>myVerificator.verify(question,this))
 }
+
+module.exports = Answerer;

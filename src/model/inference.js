@@ -1,4 +1,4 @@
-const Translator = require("./Translator");
+const Translator = require("./translator");
 
 function Inference(header,satisfy){
     this.header=header;
@@ -14,6 +14,8 @@ Inference.prototype.verifies=function(question,answerer){
         let translator=Translator.fromTo(this.header,question);
         let translated=translator.wrap(answerer);
         return translated.ask(this.satisfy);
+    }else{
+        return false;
     }
 }
 
@@ -24,3 +26,5 @@ Inference.build=function(args){
     }
     return new Inference(arrArgs[0],arrArgs[1]);
 }
+
+module.exports=Inference;

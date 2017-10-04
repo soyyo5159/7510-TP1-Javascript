@@ -19,6 +19,10 @@ Premise.prototype.verifies=function(question,answerer){
     return this.equals(question);
 }
 
+Premise.prototype.matches=function(other){
+    return (other.values.length==this.values.length && this.name===other.name);
+}
+
 Premise.prototype.equals=function(question){
     return question.name===this.name 
     && this.values.length === question.values.length
