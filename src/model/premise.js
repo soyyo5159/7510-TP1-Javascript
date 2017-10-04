@@ -11,6 +11,10 @@ Premise.build=function(args){
     return new Premise(arrArgs[0],arrArgs.slice(1));
 }
 
+Premise.prototype.satisfies=function(f){
+    return f(this);
+}
+
 Premise.prototype.verifies=function(question,answerer){
     return this.equals(question);
 }

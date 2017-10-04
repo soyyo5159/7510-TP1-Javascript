@@ -2,8 +2,7 @@ function Colection(elements){
     this.elements=elements;
 }
 Colection.prototype.satisfies=function(f){
-    console.log(this.elements)
-    return this.elements.map(f).reduce(this.combine);
+    return this.elements.map((x)=>x.satisfies(f)).reduce(this.combine);
 }
 
 
