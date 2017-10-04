@@ -6,16 +6,28 @@ var Premise = require('./premise');
 describe("equality",function(){
     it("With many arguments",function(){
         assert.isTrue(
+            (Premise.build(["a","b","c"]))
+            .equals(
+                new Premise("a",["b","c"])
+            )
+        );
+        assert.isTrue(
             (Premise.build("a","b","c"))
             .equals(
                 new Premise("a",["b","c"])
+            )
+        );
+        assert.isTrue(
+            (Premise.build("a","b","c"))
+            .equals(
+                Premise.build(["a","b","c"])
             )
         );
     })
 
     it("Different argument count",function(){
         assert.isFalse(
-            (Premise.build("a","b","d","g"))
+            (Premise.build(["a","b","d","g"]))
             .equals(
                 new Premise("a",["b","d"])
             )
@@ -24,7 +36,7 @@ describe("equality",function(){
 
     it("different arguments",function(){
         assert.isFalse(
-            (Premise.build("a","b","d"))
+            (Premise.build(["a","b","d"]))
             .equals(
                 new Premise("a",["b","c"])
             )
