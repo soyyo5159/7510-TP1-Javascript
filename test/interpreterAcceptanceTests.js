@@ -5,7 +5,7 @@ var assert = require('assert');
 var Interpreter = require('../src/interpreter');
 
 
-describe.skip("Interpreter", function () {
+describe("Interpreter", function () {
 
     var db = [
         "varon(juan).",
