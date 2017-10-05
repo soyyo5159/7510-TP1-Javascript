@@ -3,7 +3,7 @@ const Inference=require("./inference");
 const Premise=require("./premise");
 const Conjunction=require("./collection").Conjunction;
 const Disjunction=require("./collection").Disjunction;
-const Answerer=require("./answerer");
+const Answerer=require("./database");
 
 describe("Inference with a conjunction",function(){
     let inference=new Inference(
