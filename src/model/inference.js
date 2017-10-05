@@ -1,3 +1,5 @@
+const buildable=require("./makeBuildable");
+
 const Translator = require("./translator");
 
 function Inference(header,satisfy){
@@ -19,12 +21,6 @@ Inference.prototype.verifies=function(question,answerer){
     }
 }
 
-Inference.build=function(args){
-    let arrArgs=Array.prototype.slice.apply(arguments);
-    if(arrArgs.length==1){
-        arrArgs=args;
-    }
-    return new Inference(arrArgs[0],arrArgs[1]);
-}
+buildable(Inference,(a)=>new Inference(a[0],a[1]));
 
 module.exports=Inference;

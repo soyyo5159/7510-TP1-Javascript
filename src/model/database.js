@@ -1,3 +1,5 @@
+const buildable=require("./makeBuildable");
+
 const Disjunction = require("./collection").Disjunction;
 
 function Answerer(elements){
@@ -18,12 +20,6 @@ Answerer.prototype.askQuestion=function(question){
     })
 }
 
-Answerer.build=function(args){
-    let arrArgs=Array.prototype.slice.call(arguments);
-    if(arrArgs.length==1){
-        arrArgs=args;
-    }
-    return new Answerer(arrArgs);
-}
+buildable(Answerer);
 
 module.exports = Answerer;

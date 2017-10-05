@@ -18,3 +18,16 @@ RegexParser.prototype.separate=function(str){
 }
 
 module.exports=RegexParser;
+
+/*
+//QUIERO HACER
+RegexParser=Object.create(ChainableParser,{
+    recognizes:function(str){
+        return this.recognitionRegex.test(clean(str));
+    },
+    separate:function(str){  
+        return clean(str).split(this.separationRegex).filter((x)=>x!=="");
+    }
+})
+module.exports=RegexParser;
+*/

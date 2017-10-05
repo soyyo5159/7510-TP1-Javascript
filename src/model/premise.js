@@ -1,15 +1,11 @@
+const buildable=require("./makeBuildable");
+
 function Premise(name,values){
     this.name=name;
     this.values=values || [];
 }
 
-Premise.build=function(args){
-    let arrArgs=Array.prototype.slice.apply(arguments);
-    if(arrArgs.length==1){
-        arrArgs=args;
-    }
-    return new Premise(arrArgs[0],arrArgs.slice(1));
-}
+buildable(Premise,(a)=>new Premise(a[0],a.slice(1)));
 
 Premise.prototype.satisfies=function(f){
     return f(this);

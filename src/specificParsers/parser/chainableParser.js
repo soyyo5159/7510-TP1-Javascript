@@ -9,3 +9,17 @@ ChainableParser.prototype.cantRecognize=function(str){
 }
 
 module.exports=ChainableParser;
+
+/*
+QUIERO HACER:
+
+let ChainableParser=Object.create(Parser,{
+    parseParts:function(str){
+        return this.nextParser.parse(str);
+    },
+    cantRecognize:function(str){
+        return this.nextParser.parse(str);
+    }
+});
+module.exports=ChainableParser;
+*/
