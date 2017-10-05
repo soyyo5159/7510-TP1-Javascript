@@ -1,0 +1,10 @@
+module.exports={
+    Conjunction:require("./collection").Conjunction,
+    Disjunction:require("./collection").Disjunction,
+    Database:require("./database"),
+    Inference:require("./inference"),
+    Premise:require("./premise"),
+    Token:{
+        build:(x)=>x[0]
+    }
+}

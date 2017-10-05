@@ -28,7 +28,8 @@ function ModelParser(){
     databaseParser.build=model.Database.build;
     databaseParser.nextParser = inferenceParser;
 
-    this.nextParser=databaseParser;
-    this.recognize=()=>false;
+    this.parse=databaseParser.parse.bind(databaseParser);
 }
-ModelParser.prototype=Object.create(parsers.Parser.prototype)
+//ModelParser.prototype=Object.create(parsers.Parser.prototype)
+
+module.exports=ModelParser;
