@@ -1,35 +1,43 @@
 const parsers=require("./specificParsers")
 const model=require("./model")
+
+function chainedParserConstruction(first,parserConstructors,modelConstructors){
+    let next=first;
+    for(let i=0;i<parserConstructors.length;i++){
+        let parser = new parserConstructors[i]();
+        parser.build = modelConstructors[i].build;
+        parser.nextParser=next;
+        next=parser;
+    }
+    return next;
+}
+
+
 function ModelParser(){
     let nothingParser = new parsers.NothingParser();
 
-    let tokenParser = new parsers.TokenParser();
-    tokenParser.build = model.Token.build;
-    tokenParser.nextParser=nothingParser;
+    let p=parsers;
+    let m=model;
 
-    let premiseParser = new parsers.PremiseParser();
-    premiseParser.build = model.Premise.build;
-    premiseParser.nextParser=tokenParser;
-
-    let conjunctionParser = new parsers.ConjunctionParser();
-    conjunctionParser.build = model.Conjunction.build;
-    conjunctionParser.nextParser=premiseParser;
-
-    let disjunctionParser=new parsers.DisjunctionParser();
-    disjunctionParser.build = model.Disjunction.build;
-    disjunctionParser.nextParser=conjunctionParser;
-
-    let inferenceParser = new parsers.InferenceParser();
-    inferenceParser.build=model.Inference.build;
-    inferenceParser.nextParser=disjunctionParser;
-
-
-    let databaseParser=new parsers.DatabaseParser();
-    databaseParser.build=model.Database.build;
-    databaseParser.nextParser = inferenceParser;
+    let databaseParser=chainedParserConstruction(nothingParser,
+    [
+        p.TokenParser,
+        p.PremiseParser,
+        p.ConjunctionParser,
+        p.DisjunctionParser,
+        p.InferenceParser,
+        p.DatabaseParser
+    ],
+    [
+        m.Token,
+        m.Premise,
+        m.Conjunction,
+        m.Disjunction,
+        m.Inference,
+        m.Database
+    ]);
 
     this.parse=databaseParser.parse.bind(databaseParser);
 }
-//ModelParser.prototype=Object.create(parsers.Parser.prototype)
 
 module.exports=ModelParser;
