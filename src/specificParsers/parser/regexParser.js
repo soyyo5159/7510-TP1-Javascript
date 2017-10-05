@@ -1,17 +1,20 @@
 const ChainableParser = require("./chainableParser");
 
+function clean(str){
+    return str.replace(/\ /g,"").replace(/\n/g,"");
+}
+
 function RegexParser(){}
 
 RegexParser.prototype=Object.create(ChainableParser.prototype);
 
 RegexParser.prototype.recognizes=function(str){
-    let defStr=str.replace(/\ /g,"").replace(/\n/g,"");
-    return this.recognitionRegex.test(defStr);
+    return this.recognitionRegex.test(clean(str));
 }
 
 RegexParser.prototype.separate=function(str){
-    let defStr=str.replace(/\ /g,"").replace(/\n/g,"");
-    return defStr.split(this.separationRegex).filter((x)=>x!=="");
+    
+    return clean(str).split(this.separationRegex).filter((x)=>x!=="");
 }
 
 module.exports=RegexParser;
